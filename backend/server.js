@@ -1,64 +1,66 @@
 const express = require("express");
-
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
 app.use(cors());
-
 app.use(express.json());
 
-let projects = [];
 
-let tasks = [];
+// Serve frontend files
+app.use(express.static(path.join(__dirname, "../frontend")));
 
-app.get("/", (req,res)=>{
-    res.send("TeamSync Server Running");
+
+// Sample in-memory tasks
+let tasks = [
+    {
+        id: 1,
+        title: "Complete TeamSync Project"
+    }
+];
+
+
+// Home route
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
-app.post("/projects",(req,res)=>{
 
-    const project = {
-        id: Date.now(),
-        name: req.body.name
-    };
-
-    projects.push(project);
-
-    res.json(project);
-});
-
-app.get("/projects",(req,res)=>{
-    res.json(projects);
-});
-
-app.post("/tasks",(req,res)=>{
-
-    const task = {
-        id: Date.now(),
-        title: req.body.title,
-        status: req.body.status
-    };
-
-    tasks.push(task);
-
-    res.json(task);
-});
-
-app.get("/tasks",(req,res)=>{
+// Get all tasks
+app.get("/tasks", (req, res) => {
     res.json(tasks);
 });
 
-app.delete("/tasks/:id",(req,res)=>{
+
+// Add task
+app.post("/tasks", (req, res) => {
+
+    const newTask = {
+        id: tasks.length + 1,
+        title: req.body.title
+    };
+
+    tasks.push(newTask);
+
+    res.json(newTask);
+});
+
+
+// Delete task
+app.delete("/tasks/:id", (req, res) => {
 
     tasks = tasks.filter(
-        (task)=>task.id != req.params.id
+        (task) => task.id != req.params.id
     );
 
     res.json({
-        message:"Task Deleted"
+        message: "Task Deleted"
     });
 });
+
+
+// Start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
