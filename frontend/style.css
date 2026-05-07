@@ -1,0 +1,60 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+    padding-top:50px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+.box{
+    margin-bottom:20px;
+}
+
+input,select{
+    padding:12px;
+    width:220px;
+    border:none;
+    border-radius:8px;
+    margin-right:10px;
+    outline:none;
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    background:#38bdf8;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#0ea5e9;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.card h3{
+    margin:0;
+    margin-bottom:10px;
+}
+
+.card p{
+    margin-bottom:15px;
+}

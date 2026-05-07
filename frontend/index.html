@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamSync</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>TeamSync Task Manager</h1>
+
+        <div class="box">
+            <input type="text" id="projectInput" placeholder="Project Name">
+            <button onclick="addProject()">Add Project</button>
+        </div>
+
+        <div class="box">
+            <input type="text" id="taskInput" placeholder="Task Name">
+
+            <select id="statusInput">
+                <option>Pending</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+            </select>
+
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <div id="projectList"></div>
+
+        <div id="taskList"></div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
